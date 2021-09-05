@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div style= "color:white;"class="container">
+    {{form_start(form) }}
+    {{form_widget(form)}}
+    <input type="submit" value="Nueva Cerveza"/>
+    {{form_end(form) }} 
+    </div>
+{% endblock %}

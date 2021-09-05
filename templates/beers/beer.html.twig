@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+ {% block body %}
+ <div class="d-flex justify-content-center" style="padding-bottom:105px">
+    <div class="card m-4" style="width: 16rem; height: auto;">
+            <img src={{beer.image}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{beer.name}}</h5>
+                <p class="card-text">{{beer.description}}</p>
+            </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Estilo:{{beer.style}}</li>
+            <li class="list-group-item">Graduacion:{{beer.graduation}}%</li>
+            <li class="list-group-item">Introducida:{{beer.introduced}}</li>
+            <li class="list-group-item">Tipo de fermentacion:{{beer.fermentationType}}</li>
+        </ul>
+    </div>
+</div>
+ {% endblock %}

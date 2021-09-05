@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+        {% block body %}
+        {% if is_granted("ROLE_ADMIN") %}
+<div class="d-flex justify-content-center mt-4 mb-4">
+            <button class="btn btn-primary "><a href={{path("new_beer")}} class="text-decoration-none text-white">Agregar Cerveza</a></button>    
+        </div>
+        {% endif %}
+    <div class="card-group">
+    {% for beer in beers %}
+        <div class="card mt-3" style= "padding-bottom:105px;">
+        <div style= "height:600px; width:400px" class="card-img-top">
+
+            <img src={{beer.image}}  alt="...">
+
+        </div >
+            <div class="card-body" >
+                <h5 class="card-title">{{beer.name}}</h5>
+                <p class="card-text text-truncate">{{beer.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush" >
+            <li class="list-group-item" >Estilo:{{beer.style}}</li>
+            <li class="list-group-item" >Graduacion:{{beer.graduation}}%</li>
+            <li class="list-group-item" >Introducida:{{beer.introduced}}</li>
+            <li class="list-group-item" >Tipo de fermentacion:{{beer.fermentationType}}</li>
+        </ul>
+            <div class="card-footer">
+            <button class="btn btn-primary"><a href={{path("one_beer",{id:beer.id})}} class="text-decoration-none text-white">Mas Info</a></button>
+            {% if is_granted("ROLE_ADMIN") %}
+            <button class="btn btn-primary"> <a href={{path("edit_beer",{id:beer.id})}} class="text-decoration-none text-white">Edit</a></button>
+            <button class="btn btn-danger"><a href={{path("del_beer",{id:beer.id})}} class="text-decoration-none text-white">Eliminar</a></button>
+            {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+        {% endblock %}
+ 
